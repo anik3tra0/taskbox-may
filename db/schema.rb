@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 20160507064042) do
     t.integer  "user_id"
   end
 
-  create_table "movies", force: :cascade do |t|
-    t.string   "name"
-    t.string   "language"
-    t.date     "date_watched"
-    t.string   "poster_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -68,10 +59,7 @@ ActiveRecord::Schema.define(version: 20160507064042) do
     t.string   "hobbies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.string   "job_title"
-=======
->>>>>>> 502354ce773d62231ac9ac34916e88af5f6d8eb2
   end
 
   create_table "project_categories", force: :cascade do |t|
