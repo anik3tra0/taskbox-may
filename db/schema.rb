@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160507064042) do
 
   create_table "categories", force: :cascade do |t|
@@ -67,7 +68,10 @@ ActiveRecord::Schema.define(version: 20160507064042) do
     t.string   "hobbies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string   "job_title"
+=======
+>>>>>>> 502354ce773d62231ac9ac34916e88af5f6d8eb2
   end
 
   create_table "project_categories", force: :cascade do |t|
