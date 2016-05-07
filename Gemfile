@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 ruby '2.2.3'
 
 gem 'faker'
@@ -7,7 +8,6 @@ gem 'devise'
 gem "chartkick"
 gem 'cancan'
 gem 'rabl' #ruby api builder language
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
