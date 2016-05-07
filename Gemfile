@@ -56,3 +56,7 @@ group :development do
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 end
 
+group :production do 
+	gem 'pg'
+	gem 'rails12factor'
+end
