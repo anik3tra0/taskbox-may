@@ -1,14 +1,10 @@
-group :development do
-source 'http://rubygems.org'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-end
+source 'https://rubygems.org'
 
 gem 'faker'
 gem 'devise'
 gem "chartkick"
 gem 'cancan'
 gem 'rabl' #ruby api builder language
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
