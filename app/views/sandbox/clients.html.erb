@@ -1,0 +1,33 @@
+<h3>Total Clients : <%= @clients.size %></h3>
+
+
+<%= @clients %>
+
+<!--
+<ul>
+	<% @clients.each do |client| %>
+		<li><%= client.name %></li>
+	<% end %>
+</ul>
+-->
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Company</th>
+			<th>Project Count</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @clients.each_with_index do |client, index| %>
+			<tr>
+				<td><%= index + 1 %></td>
+				<td><%= client.name %></td>
+				<td><%= client.company %></td>
+				<td><%= client.projects.size %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

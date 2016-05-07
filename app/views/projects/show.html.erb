@@ -1,0 +1,72 @@
+<h3><%= @project.name %></h3>
+(<%= @project.categories.pluck(:name).join(", ") %>)
+
+<h3>Total Tasks: <%= @tasks.size %></h3>
+
+<% data = []
+	for task in @project.tasks
+		data.push([task.name, @project.start_date, task.due_date])
+	end 
+%>
+
+<%#= data %>
+
+<% if @project.tasks.empty? %>
+	No tasks no timeline chart
+<% else %>
+	<%= timeline(data) %>
+<% end %>
+
+
+<h3>Overdue Tasks : <%= @over_due_tasks.size %></h3>
+<ul>
+	<% for task in @over_due_tasks %>
+		<li><%= task.name %> - <%= task.due_date.strftime("%A, %d %B %Y")  %>
+				<%# task.name + " - " + task.due_date.strftime("%A, %d %B %Y") %>
+				<%= link_to "Mark as complete", tasks_mark_as_complete_path(task: task.id) %>
+
+				<%# link_to "mark as complete", "/tasks/mark_as_complete?task=#{task.id}" %>
+		</li>
+	<% end %>
+</ul>
+
+
+<h3>Incomplete Tasks : <%= @incomplete_tasks.size %></h3>
+<ul>
+	<% for task in @incomplete_tasks %>
+		<li><%= task.name %> - <%= task.due_date.strftime("%A, %d %B %Y") %></li>
+		<%= link_to "Mark as complete", tasks_mark_as_complete_path(task: task.id) %>
+	<% end %>
+</ul>
+
+<h3>Completed Tasks : <%= @completed_tasks.size %></h3>
+<ul>
+	<% for task in @completed_tasks %>
+		<li><%= task.name %> - <%= task.due_date.strftime("%A, %d %B %Y") %></li>
+	<% end %>
+</ul>
+
+<%= link_to "Add Task", new_task_path(project_id: @project.id) %>
+
+
+<hr/>
+<h3>Add Task</h3>
+
+<%= form_for Task.new do |f| %>
+
+<%= f.hidden_field :project_id, value: @project.id %>
+
+<label>Name:</label><br/>
+<%= f.text_field :name %><br/>
+
+<label>Due Date:</label><br/>
+<%= f.date_select :due_date, order:[:day, :month,:year] %><br/>
+
+<label>Is Completed? </label><br/>
+<%= f.check_box :is_completed %><br/>
+
+<%= f.submit %>
+
+
+<% end %>
+

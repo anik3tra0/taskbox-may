@@ -1,0 +1,21 @@
+<h3><%= @client.name %></h3>
+
+<% if can? :update, @client %>
+	<%= link_to "edit", edit_client_path(@client) %> 
+<% end %>
+
+<% if can? :destroy, @client %>| 
+	<%= link_to "destroy", client_path(@client), method: :delete, data: {confirm: "Are you sure?" } %>
+<% end %>
+
+<br/>
+<%= @client.mobile %> <%= @client.email %>
+<hr>
+
+<h3>Total Projects : <%= @client.projects.size %></h3>
+
+<ul>
+	<% for project in @client.projects %>
+		<li><%= project.name %></li>
+	<% end %>
+</ul>

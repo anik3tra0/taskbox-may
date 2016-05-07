@@ -1,0 +1,11 @@
+<h1>Total Tasks : <%= @all_tasks %></h1>
+<h3>Completed Tasks : <%= @completed_tasks.size %></h3>
+<p>Recently completed tasks:</p>
+<ul>
+	<% for task in @completed_tasks.order('updated_at DESC').limit(10) %>
+		<li><%= task.name %></li>
+	<% end %>
+</ul>
+
+<h3>Incomplete Tasks : <%= @incomplete_tasks.size %></h3>
+<h3>Over Due Tasks : <%= @over_due_tasks.size %></h3>

@@ -1,0 +1,29 @@
+<h3>Total Projects : <%= @projects.length %> </h3>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Start Date</th>
+			<th>Client Name</th>
+			<th>Email</th>
+			<th>Total Tasks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each_with_index do |project, index| %>
+			<tr>
+				<td><%= index + 1%></td>
+				<td><%= link_to project.name, project_url(project) %></td>
+				<td><%= project.status %></td>
+				<td><%= project.start_date %></td>
+				<td><%= link_to project.client.try(:name), client_url(project.client_id) %></td>
+				<td><%= project.client.try(:email) %></td>
+				<td><%= project.tasks.size %></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>

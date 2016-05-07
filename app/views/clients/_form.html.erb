@@ -1,0 +1,28 @@
+<%= form_for @client do |f| %>
+<% if @client.errors.any? %>
+<h4>These errors prohibitted the form from being saved:</h4>
+<ul>
+	<% for msg in @client.errors.full_messages %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+<% end %>
+<label>Name: </label> <br/>
+<%= f.text_field :name %><br/>
+
+<label>Email: </label> <br/>
+<%= f.email_field :email %><br/>
+
+<label>Company: </label> <br/>
+<%= f.text_field :company %><br/>
+
+<label>Mobile: </label> <br/>
+<%= f.text_field :mobile %><br/>
+
+<label>Address: </label> <br/>
+<%= f.text_area :address %><br/>
+
+<label>Website: </label><br/>
+<%= f.url_field :website %><br/>
+<%= f.submit  %>
+<% end %>

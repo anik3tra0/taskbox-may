@@ -1,0 +1,43 @@
+<h3>Total Clients : <%= @clients.size %></h3>
+
+<a href="/clients/new">Add Client (html)</a>
+<%= link_to "Add Client (ror)", new_client_path %>
+
+<script>
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+</script>
+
+<table id="myTable" border="1">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Company</th>
+			<th>Mobile </th>
+			<th>Project Count</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @clients.each_with_index do |client, index| %>
+			<tr>
+				<td><%= index + 1 %></td>
+				<td><%= link_to client.name, client_path(client) %></td>
+				<td><%= client.company %></td>
+				<td><%= client.mobile %></td>
+				<td><%= client.projects.size %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<% data = {} %>
+<% for client in @clients %>
+	<% data["#{client.name}"] = client.projects.count %>
+<% end %>
+<%# data %>
+
+<%= column_chart(data) %>
+

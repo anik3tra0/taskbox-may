@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  language: MyString
+  date_watched: 2016-04-13
+  poster_url: MyString
+
+two:
+  name: MyString
+  language: MyString
+  date_watched: 2016-04-13
+  poster_url: MyString

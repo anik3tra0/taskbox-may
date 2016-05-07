@@ -1,0 +1,33 @@
+
+<p> 2 + 2 </p>
+
+<%= 2 + 2 %>
+
+<p> 2 * 3 </p>
+<%= 2 * 3 %>
+
+<ul>
+	<li>Key Chain</li>
+	<li>Marker</li>
+	<li>Duster</li>
+	<li>Board</li>
+</ul>
+
+<% products = ["key chain", "marker", "duster", "board", "projectors"] %>
+<h3>Total Products : <%= products.size %></h3>
+<ul>
+	<% products.each do |product| %>
+		<li><%= product.capitalize %></li>
+	<% end %>
+</ul>
+
+<% search_engine = ["google", "yahoo"].sample %>
+
+<% if search_engine == "google" %>
+	<a href="http://www.google.com">Visit Google</a>
+<% else %>
+	<a href="http://www.yahoo.com">Visit Yahoo</a>
+<% end %>
+
+
+

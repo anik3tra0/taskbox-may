@@ -1,0 +1,4 @@
+$('#count').text('<%= Category.count %>');
+$('#listing').append('<%= j render('list', partial_category: @category)%>');
+$('#new_category').hide();
+$('#add_category').show();

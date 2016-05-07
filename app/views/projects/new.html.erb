@@ -1,0 +1,42 @@
+<h3>Add Project</h3>
+
+<%= form_for @project do |f| %>
+<% if @project.errors.any? %>
+ <h3>These errors prohibitted the form from being saved: </h3>
+ <ul>
+ 	<% for msg in @project.errors.full_messages %>
+		<li><%= msg %></li>
+ 	<% end %>
+ </ul>
+<% end %>
+
+<label>Name: </label><br/>
+<%= f.text_field :name %><br/>
+
+<label>Description: </label><br/>
+<%= f.text_area :description, row: 10, cols: 50 %> <br/>
+
+<label>Start Date:</label><br/>
+<%= f.date_select :start_date, order: [:day, :month, :year], start_year: 2016 %><br/>
+
+<label>Status: </label><br/>
+<%= f.radio_button :status, "new" %>New 
+<%= f.radio_button :status, "on-going" %>On Going 
+<%= f.radio_button :status, "completed" %>Completed 
+<br/>
+
+<!--  this is a drop down 
+<label>Status: </label><br/>
+<%#= f.select :status, ["new", "on-going", "completed"], prompt: "Select Status" %><br/>
+--> 
+
+<!-- this is used more for dynamic records --> 
+<label>Client: </label><br/>
+<%= f.collection_select :client_id, current_user.clients, :id, :details, prompt: "Select Client" %><br/>
+
+<label>Categories: </label><br/>
+<%= f.collection_check_boxes :category_ids, Category.all,:id, :name %><br/>
+
+<%= f.submit "Submit" %>
+
+<% end %>

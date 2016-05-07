@@ -1,0 +1,26 @@
+<h3>Total Projects : <%= @projects.size %></h3>
+
+
+
+<%= link_to "Add Project", new_project_path %> | 
+<%= link_to "Download as Excel", projects_path(format: "xls") %>
+
+<ol>
+ <% for project in @projects %>
+ 	<li><%= link_to project.name, project_path(project.id) %> 
+ 	- 
+ 	<%= project.client.try(:name) %>
+	- (<%= project.categories.pluck(:name).join(", ") %>)
+ 	</li>
+ <% end %>
+</ol>
+
+<% data = {
+					 "new" => @projects.where('status = ?', "new").count, 
+					 "on going" => @projects.where('status = ?', "on-going").count, 
+					 "completed" => @projects.where('status = ?', "completed").count
+					} %>
+
+<%= pie_chart(data) %>
+
+

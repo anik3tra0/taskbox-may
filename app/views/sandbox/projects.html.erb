@@ -1,0 +1,7 @@
+<h3>Total Projects : <%= @projects.size %></h3>
+
+<ol>
+ <% for project in @projects %>
+ 	<li><%= project.name %> - <%= project.client.name if !project.client.nil? %></li>
+ <% end %>
+</ol>

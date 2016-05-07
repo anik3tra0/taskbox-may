@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasksbox</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+  <%= csrf_meta_tags %>
+	
+	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	
+	<link href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<% if user_signed_in? %>
+	Welcome <%= current_user.email %> , <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+	<%= link_to "Register", new_user_registration_path %> | <%= link_to "Sign In", new_user_session_path %>
+<% end %>
+
+
+<%= notice %> <!-- success msges -->
+<%= alert %> <!-- warning msges -->
+
+<%= yield %>
+
+
+You've logged in from <%= current_user.current_sign_in_ip if user_signed_in? %>
+</body>
+</html>
