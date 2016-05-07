@@ -10,9 +10,15 @@ class User < ActiveRecord::Base
 
 	has_many :permissions
 	has_many :roles, through: :permissions
+	
+	after_create :set_role
 
 	def role?(role)
 		self.roles.pluck(:name).include?(role)
+	end
+
+	def det_role
+ 		self.roles.push(Role.find(2))
 	end
 
 end
